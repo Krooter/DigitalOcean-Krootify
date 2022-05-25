@@ -1,0 +1,70 @@
+<div class="logo">
+    <img src="../../../assets/image/krootify_logo.png">
+</div>
+
+<div class="wrapper">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- <label>Email</label>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input name="email" id="email" formControlName="email" name="email" matInput placeholder="Email" type="text">
+              <mat-icon *ngIf="!email?.touched && !email?.dirty" matSuffix>mail_outline</mat-icon>
+              <mat-icon *ngIf="email?.invalid && (email?.touched || email?.dirty)" matSuffix color="warn">close</mat-icon>
+              <mat-icon *ngIf="email?.valid && (email?.touched || email?.dirty)" matSuffix color="primary">check_circle_outline</mat-icon>
+              <mat-hint *ngIf="!email?.dirty">Enter your email.</mat-hint>
+              <mat-error *ngIf="email?.errors?.required">This field is required!</mat-error>
+              <mat-error *ngIf="email?.errors?.minlength">Your email address is to short.</mat-error>
+              <mat-error *ngIf="email?.errors?.pattern">Your entered a invalid email!</mat-error>
+            </mat-form-field>
+            <label>Password</label>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input id="password" formControlName="password" matInput placeholder="Password" type="password">
+              <mat-icon *ngIf="!password?.touched  && !password?.dirty" matSuffix>vpn_key</mat-icon>
+              <mat-icon *ngIf="password?.invalid && (password?.touched || password?.dirty)" matSuffix color="warn">close</mat-icon>
+              <mat-icon *ngIf="password?.valid && (password?.touched || password?.dirty)" matSuffix color="primary">check_circle_outline</mat-icon>
+              <mat-hint *ngIf="!password?.dirty">Enter your password.</mat-hint>
+              <mat-error *ngIf="password?.errors?.required">This field is required!</mat-error>
+              <mat-error *ngIf="password?.errors?.minlength">Your password is to short.</mat-error>
+              <mat-error *ngIf="password?.errors?.pattern">Password should contain minimum eight characters, at least one letter, one number and one special character.</mat-error>
+            </mat-form-field>
+            <label>Username</label>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input id="username" formControlName="username" matInput placeholder="username" type="text">
+                <mat-icon *ngIf="!username?.touched  && !username?.dirty" matSuffix>account_circle</mat-icon>
+                <mat-icon *ngIf="username?.invalid && (username?.touched || username?.dirty)" matSuffix color="warn">close</mat-icon>
+                <mat-icon *ngIf="username?.valid && (username?.touched || username?.dirty)" matSuffix color="primary">check_circle_outline</mat-icon>
+                <mat-hint *ngIf="!username?.dirty">Enter your username.</mat-hint>
+                <mat-error *ngIf="username?.errors?.required">This field is required!</mat-error>
+                <mat-error *ngIf="username?.errors?.minlength">Your username is to short, minimum lenght is 4 characters!</mat-error>
+              </mat-form-field>
+              <label>Firstname</label>
+              <mat-form-field appearance="outline">
+                <mat-label>Firstname</mat-label>
+                <input id="firstname" formControlName="firstname" matInput placeholder="firstname" type="text">
+                <mat-icon *ngIf="firstname?.invalid && (firstname?.touched || firstname?.dirty)" matSuffix color="warn">close</mat-icon>
+                <mat-icon *ngIf="firstname?.valid && (firstname?.touched || firstname?.dirty)" matSuffix color="primary">check_circle_outline</mat-icon>
+                <mat-hint *ngIf="!firstname?.dirty">Enter your firstname.</mat-hint>
+                <mat-error *ngIf="firstname?.errors?.required">This field is required!</mat-error>
+              </mat-form-field>
+              <label>Lastname</label>
+              <mat-form-field appearance="outline">
+                <mat-label>Lastname</mat-label>
+                <input id="lastname" formControlName="lastname" matInput placeholder="Lastname" type="text">
+                <mat-icon *ngIf="lastname?.invalid && (lastname?.touched || lastname?.dirty)" matSuffix color="warn">close</mat-icon>
+                <mat-icon *ngIf="lastname?.valid && (lastname?.touched || lastname?.dirty)" matSuffix color="primary">check_circle_outline</mat-icon>
+                <mat-hint *ngIf="!lastname?.dirty">Enter your lastname.</mat-hint>
+                <mat-error *ngIf="lastname?.errors?.required">This field is required!</mat-error>
+              </mat-form-field> -->
+              <app-text-input formControlName="email" [label]="'Email address'" [icon]="'mail_outline'"></app-text-input>
+              <app-text-input formControlName="password" [label]="'Password'" [type]="'password'" [icon]="'vpn_key'"></app-text-input>
+              <app-text-input formControlName="username" [label]="'Username'"></app-text-input>
+              <app-text-input formControlName="firstname" [label]="'Firstname'"></app-text-input>
+              <app-text-input formControlName="lastname" [label]="'Lastname'"></app-text-input>
+            <div class="buttons">
+              <button routerLink="/account/register" [disabled]="registerForm.invalid" class="btn-register" mat-raised-button>REGISTER</button>
+              <button routerLink="/account/login" class="btn-login" mat-raised-button>GO TO LOGIN</button>
+            </div>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<div class="">
+  <div *ngIf="controls" class="navigation">
+    <button [disabled]="isBackEnabled()" mat-mini-fab (click)="back()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button [disabled]="isForwardEnabled()" mat-mini-fab (click)="forward()">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+
+  <div class="panel">
+    <div class="premium" *ngIf="!isSubscribed">
+      <button routerLink="/pricing">UPGRADE</button>
+    </div>
+
+    <div class="loggeduser" *ngIf="currentUser$ | async">
+      <button mat-raised-button (click)="displayDropDownMenu()">
+        <img src="{{ (currentUser$ | async)?.photoUrl }}" />
+        {{ (currentUser$ | async)?.username }}
+        <mat-icon *ngIf="!isDisplayed">arrow_drop_down</mat-icon>
+        <mat-icon *ngIf="isDisplayed">arrow_drop_up</mat-icon>
+        <div *ngIf="isDisplayed" class="dropdown-content">
+          <a (click)="openProfileSettings()"
+            >Account <mat-icon>account_circle</mat-icon></a
+          >
+          <a *ngIf="isAdmin()" routerLink="dashboard"
+            >Admin panel
+            <mat-icon>supervisor_account</mat-icon>
+          </a>
+          <a (click)="logout()">Logout <mat-icon>logout</mat-icon></a>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

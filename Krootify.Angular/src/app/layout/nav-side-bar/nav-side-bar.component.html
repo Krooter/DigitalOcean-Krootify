@@ -1,0 +1,14 @@
+<div class="sidenav">
+    <img (click)="route('/main')" routerLink="/main" src="../../../assets/image/krootify_logo.png">
+    <a (click)="route('/main')" routerLink="/main" routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
+    <a (click)="route('/library')" routerLink="/library" routerLinkActive="active"><mat-icon>library_music</mat-icon>Library</a>
+    <a (click)="addPlayList()"><mat-icon>control_point</mat-icon>Create playlist</a>
+    
+    <hr color="#5a5858" style="margin-left: 20px; margin-right: 20px; margin-top: 20px;">
+
+    <div *ngFor="let item of playLists">
+        <a (click)="route('/playlist/' + item.id)" routerLink="/playlist/{{item.id}}" routerLinkActive="active" class="playlists">
+            {{item.name}}
+        </a>
+    </div>
+</div>

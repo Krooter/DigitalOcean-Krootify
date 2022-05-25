@@ -1,0 +1,89 @@
+.container{
+    display: flex;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.3fr));
+    grid-row-gap: 20px;
+    font-family: Ghotham;
+    margin-top: 20px;
+    margin-bottom: 10%;
+}
+
+mat-card div img {
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+    object-fit: cover;
+    max-width: 400px;
+    max-height: 400px;
+    cursor: pointer;
+}
+
+div h1 {
+    color: white; 
+    font-weight: bold; 
+    font-size: 30px;
+}
+
+mat-card {
+    overflow:hidden;
+    width: 80%; 
+    height: 90%; 
+    background-color: rgba(0, 0, 0, 0.151);
+    button {
+        opacity: 0;
+        visibility: hidden;
+        transition:all .5s linear;
+        width: 40px; 
+        height: 40px; 
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 12%;
+        bottom: 14%;
+    }
+}
+
+mat-card:hover {
+    transition: .5s;
+    background-color: rgba(82, 80, 80, 0.171);
+    button {
+        transition:all .5s linear;
+        opacity: 1;
+        visibility: visible;
+        right: 12%;
+        bottom: 20%;
+    }
+}
+
+mat-card div p {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 0.6;
+    color: white;
+}
+
+mat-card div a {
+    line-height: 0.6;
+    color: #969494;
+}
+
+.dropdown {
+    position: absolute; 
+    right: 1%; 
+    bottom: 1%;
+}
+
+::ng-deep .menu {
+    padding: 0;
+    background-color: #181818;
+    color: white;
+    .mat-menu-submenu-icon {
+        color: white;
+    }
+}
+

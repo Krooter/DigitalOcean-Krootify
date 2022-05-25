@@ -1,0 +1,13 @@
+<app-nav-top-bar></app-nav-top-bar>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" opened class="sidenav">
+        <img class='logo' routerLink="/main" src="../../../../assets/image/krootify_logo.png">
+        <a class="side-btn" routerLink="/dashboard/song" routerLinkActive="active"><mat-icon>library_music</mat-icon>Songs</a>
+        <a class="side-btn" routerLink="/dashboard/artist" routerLinkActive="active"><mat-icon>stars</mat-icon>Artists</a>
+        <a class="side-btn" routerLink="/dashboard/album" routerLinkActive="active"><mat-icon>album</mat-icon>Albums</a>
+    </mat-drawer>
+</mat-drawer-container>

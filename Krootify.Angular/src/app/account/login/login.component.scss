@@ -1,0 +1,80 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #969494;
+    img{
+        padding: 20px;
+        width: 15%;
+    }
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label{
+        align-self: flex-start;
+        margin-left: 35.5%;
+        margin-top: 15px;
+        font-weight: bolder;
+        display: inline;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
+.buttons { 
+    display: inline-flex; 
+    justify-content: space-between; 
+    width: 24%;
+}
+
+.btn-login {
+    margin-top: 25px;
+    background-color: #1ab24d;
+    color: white;
+    outline: 0;
+    border: none;
+    padding: 3px 10px;
+    width: 35%;
+    height: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        transition: 0.5s;
+        color:rgb(138, 137, 137)
+    }
+}
+
+.btn-register {
+    margin-top: 25px;
+    background-color: black;
+    color: white;
+    outline: 0;
+    border: none;
+    padding: 3px 10px;
+    width: 55%;
+    height: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        transition: 0.5s;
+        color:rgb(138, 137, 137)
+    }
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    outline: 0;
+    top: -6px;
+    left: 20px;
+    font-size: 14px;
+}

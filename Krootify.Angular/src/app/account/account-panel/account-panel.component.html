@@ -1,0 +1,164 @@
+<div class="wrapper">
+  <a (click)="close()" class="close-btn">
+    <mat-icon class="button">clear</mat-icon>
+  </a>
+  <div class="information">
+    <img class="profile-img" src="{{ (currentUser$ | async)?.photoUrl }}" />
+    <div class="information-content">
+      <a>{{ (currentUser$ | async)?.username }}</a>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="side-menu">
+      <a
+        class="{{ selected == 'email' ? 'active' : 'inactive' }}"
+        style="cursor: pointer"
+        (click)="selectEmail()"
+        >EMAIL</a
+      >
+      <a
+        class="{{ selected == 'password' ? 'active' : 'inactive' }}"
+        style="cursor: pointer"
+        (click)="selectPassword()"
+        >PASSWORD</a
+      >
+      <a
+        class="{{ selected == 'photo' ? 'active' : 'inactive' }}"
+        style="cursor: pointer"
+        (click)="selectPhoto()"
+        >PHOTO</a
+      >
+      <a
+        *ngIf="(currentUser$ | async)?.subscription?.subscriptionStatus === 2"
+        class="{{ selected == 'subscription' ? 'active' : 'inactive' }}"
+        style="cursor: pointer"
+        (click)="selectSubscription()"
+        >SUBSCRIPTION</a
+      >
+    </div>
+    <div class="text-input">
+      <form
+        *ngIf="selected === 'password'"
+        class="form-wrapper"
+        [formGroup]="passwordForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <app-text-input
+          formControlName="oldPassword"
+          [type]="'password'"
+          [label]="'Current Password'"
+        ></app-text-input>
+        <app-text-input
+          formControlName="newPassword"
+          [type]="'password'"
+          [label]="'New Password'"
+        ></app-text-input>
+        <button
+          style="margin-top: 10px"
+          [disabled]="passwordForm.invalid"
+          mat-flat-button
+          color="primary"
+        >
+          SUBMIT
+        </button>
+      </form>
+      <form
+        *ngIf="selected === 'email'"
+        class="form-wrapper"
+        [formGroup]="emailForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <app-text-input
+          formControlName="email"
+          [type]="'text'"
+          [label]="'Email'"
+        ></app-text-input>
+        <button
+          style="margin-top: 10px"
+          [disabled]="emailForm.invalid"
+          mat-flat-button
+          color="primary"
+        >
+          SUBMIT
+        </button>
+      </form>
+      <form
+        style="margin-top: 30px"
+        *ngIf="selected === 'photo'"
+        class="form-wrapper"
+        [formGroup]="photoUpdateForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <mat-form-field appearance="outline" style="width: 450px">
+          <ngx-mat-file-input
+            formControlName="photo"
+            [accept]="
+              (currentUser$ | async)?.subscription?.subscriptionStatus === 2
+                ? '.jpg, .png, .gif'
+                : '.jpg, .png'
+            "
+          >
+          </ngx-mat-file-input>
+          <mat-error *ngIf="photo?.hasError('required')">
+            Please select a file
+          </mat-error>
+          <mat-error *ngIf="photo?.hasError('maxContentSize')">
+            The total size must not exceed
+            {{ photo?.getError("maxContentSize").maxSize | byteFormat }} ({{
+              photo?.getError("maxContentSize").actualSize | byteFormat
+            }}).
+          </mat-error>
+          <mat-error *ngIf="!photo?.hasError('requiredFileType')">
+            You need to provide a valid image extension
+            {{
+              (currentUser$ | async)?.subscription?.subscriptionStatus === 2
+                ? ".jpg, .png, .gif"
+                : ".jpg, .png"
+            }}
+          </mat-error>
+          <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        <button
+          style="margin-top: 30px"
+          [disabled]="photoUpdateForm.invalid"
+          mat-flat-button
+          color="primary"
+        >
+          SUBMIT
+        </button>
+      </form>
+
+      <div
+        class="subscription-wrapper"
+        *ngIf="
+          selected === 'subscription' &&
+          (currentUser$ | async)?.subscription?.subscriptionStatus === 2
+        "
+      >
+        <div class="subscription-wrapper-content">
+          <img src="../../../assets/image/krootify_logo.png" />
+          <div style="margin-left: 20px; margin-top: 10px">
+            <p style="font-weight: bold">
+              krootify Limited <br />
+              subscription - Krootify
+            </p>
+            <p style="color: #7b7b7b; font-size: 13px">ACTIVE</p>
+            <p style="margin-top: -15px; color: #7b7b7b; font-size: 13px">
+              next billing date:
+              {{
+                (currentUser$ | async).subscription?.endDate | date: "medium"
+              }}
+            </p>
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" style="margin-right: 10px">
+          Manage
+        </button>
+        <button mat-button style="background-color: transparent">
+          Cancel subscription
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

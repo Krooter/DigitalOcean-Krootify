@@ -1,0 +1,71 @@
+.sidenav {
+    height: 100%;
+    width: 210px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-color: #000000;
+    font-family: Gotham;
+  }
+
+  .sidenav img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: 28px;
+    width: 70%;
+    cursor: pointer;
+  }
+  
+  .sidenav a {
+    cursor: pointer;
+    padding: 10px 10px 10px 20px;
+    border-radius: 5px;
+    margin-left: 12px;
+    margin-right: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #969494;
+  }
+
+  .sidenav a mat-icon {
+    padding-right: 20px;
+  }
+
+  .sidenav a.active {
+    background-color: #333333;
+    color: white;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+    transition-duration: 0.5s;
+  }
+
+  .sidenav hr {
+      color: #111;
+  }
+  
+  .main {
+    margin-left: 160px; 
+    padding: 0px 10px;
+  }
+
+  .playlists {
+    padding: 10px 10px 10px 20px;
+    color: #969494;
+  }
+
+  .playlists:hover{
+    color: white;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }

@@ -1,0 +1,85 @@
+<div class="container">
+    <input class="search" type="text" placeholder="Search..." #search (keyup)="onSearch()">
+    <div class="paginator">
+        <mat-form-field appearance="standard" style="margin-right: 50px; color: white;">
+            <mat-label style="color: white;">Sort</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let item of sortOption" [value]="item.value" (click)="onSortSelected(item.value)"
+                    style="background-color: rgb(26, 25, 25); color: white;">
+                    <a>{{item.name}}</a>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" style="margin-right: 50px;">
+            <mat-label style="color: white;">Genres</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let genre of genres" [value]="genre.genreName" (click)="onGenreSelect(genre.id)"
+                    style="background-color: rgb(26, 25, 25); color: white;">
+                    <a>{{genre.genreName}}</a>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" style="margin-right: 50px; color: white;">
+            <mat-label style="color: white;">Categories</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let category of categories" [value]="category.categoryName"
+                    (click)="onCategorySelect(category.id)" style="background-color: rgb(26, 25, 25); color: white;">
+                    <a>{{category.categoryName}}</a>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="content">
+    <mat-card *ngFor="let item of songs">
+        <div>
+            <img src="{{item?.photoUrl}}">
+            <button class="float-button" mat-fab color="primary" (click)="play(item)">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+        </div>
+        <div class="card-content">
+            <p>{{item?.name}}</p>
+            <a>{{item?.artists}}</a>
+            <div class="dropdown">
+                <button mat-icon-button [matMenuTriggerFor]="addplaylist" *ngIf="playlists?.length">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #addplaylist="matMenu" xPosition="before" class="menu">
+                    <button mat-menu-item [matMenuTriggerFor]="playlistAdd"
+                        *ngIf="playlists && isSongInPlayList(item.id, playlists) != playlists!.length">
+                        <mat-icon style="color: white;">library_add</mat-icon>
+                        <span style="color: white;">Add to playlist</span>
+                    </button>
+                    <button mat-menu-item [matMenuTriggerFor]="playlistDelete"
+                        *ngIf="playlists && isSongInPlayList(item.id, playlists) <= playlists.length && isSongInPlayList(item.id, playlists) != 0">
+                        <mat-icon style="color: white;">delete_outline</mat-icon>
+                        <span style="color: white;">Remove from playlist</span>
+                    </button>
+                </mat-menu>
+                <mat-menu #playlistAdd="matMenu" class="menu" color="primary">
+                    <ng-container *ngFor="let playlist of playlists">
+                        <button *ngIf="!isSongInThisPlayList(item.id, playlist)"
+                            (click)="addSongToPlayList(item.id, playlist.id)" mat-menu-item>
+                            <span style="color: white;">{{playlist.name}}</span>
+                        </button>
+                    </ng-container>
+                </mat-menu>
+                <mat-menu #playlistDelete="matMenu" class="menu" color="primary">
+                    <ng-container *ngFor="let playlist of playlists">
+                        <button *ngIf="isSongInThisPlayList(item.id, playlist)"
+                            (click)="deleteSongFromPlayList(item.id, playlist.id)" mat-menu-item>
+                            <span style="color: white;">{{playlist.name}}</span>
+                        </button>
+                    </ng-container>
+                </mat-menu>
+            </div>
+        </div>
+    </mat-card>
+</div>
+<div class="paginator" style="margin-right: 50px; margin-bottom: 80px; margin-top: -35px;">
+
+    <mat-paginator [pageSizeOptions]="[4, 8, 12, 16, 24]" [pageSize]="params.pageSize" [length]="totalCount" [pageIndex]="params.pageNumber"
+        (page)="onPageChanged($event)"></mat-paginator>
+</div>

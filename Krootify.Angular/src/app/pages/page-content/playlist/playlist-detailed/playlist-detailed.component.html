@@ -1,0 +1,45 @@
+<div class="title">
+    <div class="left">
+        <mat-card style="background-color: rgba(0, 0, 0, 0.151);">
+            <img src="{{playlist?.photoUrl}}">
+            <button (click)="playPlayList(playlist, 0)" style="position: absolute; right: 8%; bottom: 9%;" color="primary" mat-fab><mat-icon>playlist_play</mat-icon></button>
+
+        </mat-card>
+    </div>
+    <div class="right">
+        <h3>Playlist</h3>
+        <h1>{{playlist?.name}}</h1>
+        <div *ngIf="playlist"><a>{{playlist?.songs?.length}} Songs, </a> <a>{{getPlayListDuration()}}</a></div>
+    </div>
+</div>
+<div class="content" *ngIf="playlist">
+    <table matSort  (matSortChange)="sortData($event)">
+        <tr>
+            <th></th>
+            <th mat-sort-header="title">TITLE</th>
+            <th mat-sort-header="album">ALBUM</th>
+            <th mat-sort-header="dateAdded">DATE ADDED</th>
+            <th mat-sort-header="duration">DURATION</th>
+            <th mat-sort-header="actions"></th>
+        </tr>
+        <tr *ngFor="let item of sortedData">
+            <td style="padding-left: 10px;">
+                <div class="index">{{item.count}}</div>
+                <mat-icon class="play-icon" (click)="playPlayList(playlist, item.count - 1)">play_circle_outline</mat-icon>
+            </td>
+            <td>               
+                <div class="td-title">
+                    <img src="{{item.photoUrl}}" (click)="playPlayList(playlist, item.count - 1)">
+                    <div>
+                        <a>{{item.name}}</a> 
+                        <p>{{item.artists}}</p>
+                    </div>
+                </div>
+            </td>
+            <td>{{item.albums}}</td>
+            <td>{{item.dateAdded | date: 'dd/MM/YY'}}</td>
+            <td>{{getSongDisplayedDuration(item.duration)}}</td>
+            <td><mat-icon class="button" (click)="deleteFromPlayList(item.id, playlist.id)">delete_outline</mat-icon></td>
+        </tr>
+    </table>
+</div>

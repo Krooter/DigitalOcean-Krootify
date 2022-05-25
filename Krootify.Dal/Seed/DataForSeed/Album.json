@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "My first album",
+    "PhotoUrl": "https://photo-url.com",
+    "Description": "My first album on Krootify",
+    "ReleaseDate": "2021-08-20T13:23:15.5180000"
+  },
+  {
+    "Name": "eu",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem ipsum dolor sit",
+    "ReleaseDate": "2021-04-29T00:00:00"
+  },
+  {
+    "Name": "amet,",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem ipsum dolor sit",
+    "ReleaseDate": "2020-12-19T00:00:00"
+  },
+  {
+    "Name": "eleifend",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem",
+    "ReleaseDate": "2022-07-07T00:00:00"
+  },
+  {
+    "Name": "enim.",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem ipsum dolor sit",
+    "ReleaseDate": "2021-01-21T00:00:00"
+  },
+  {
+    "Name": "dolor",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem ipsum dolor sit",
+    "ReleaseDate": "2022-04-05T00:00:00"
+  },
+  {
+    "Name": "orci,",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem ipsum dolor",
+    "ReleaseDate": "2021-01-24T00:00:00"
+  },
+  {
+    "Name": "congue,",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem ipsum dolor",
+    "ReleaseDate": "2021-04-05T00:00:00"
+  },
+  {
+    "Name": "leo.",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem",
+    "ReleaseDate": "2020-10-02T00:00:00"
+  },
+  {
+    "Name": "dictum",
+    "PhotoUrl": "https://photo-url.com/",
+    "Description": "Lorem",
+    "ReleaseDate": "2022-05-28T00:00:00"
+  }
+]

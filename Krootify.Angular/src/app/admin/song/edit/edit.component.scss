@@ -1,0 +1,15 @@
+form {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+}
+
+.photo-form{
+    display: flex;
+    flex-direction: column;
+}
+
+:host ::ng-deep span.mat-select-value-text {
+    color: black !important;
+}

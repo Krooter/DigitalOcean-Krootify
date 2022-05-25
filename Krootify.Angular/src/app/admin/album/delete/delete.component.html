@@ -1,0 +1,8 @@
+<div style="padding: 15px; width: 350px;">
+    <h1 style="text-align: center;">Are you sure that you want to delete this album?</h1>
+    <h2 style="text-align: center; color: red;">Deleting an album will delete all songs that are related to him!</h2>
+    <div style="display: flex; justify-content: space-between;">
+        <button style="width: 60%;" mat-raised-button (click)="close()">CLOSE</button>
+        <button mat-raised-button color="warn" (click)="deleteAlbum(id)">DELETE</button>
+    </div>
+</div>

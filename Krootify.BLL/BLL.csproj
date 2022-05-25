@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Stripe.net" Version="39.103.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krootify.Common\Common.csproj" />
+    <ProjectReference Include="..\Krootify.Dal\Dal.csproj" />
+    <ProjectReference Include="..\Krootify.Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>

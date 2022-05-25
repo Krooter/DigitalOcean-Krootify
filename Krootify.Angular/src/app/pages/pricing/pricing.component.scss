@@ -1,0 +1,114 @@
+.back-button {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    cursor: pointer;
+    color: #fff;
+    padding: 20px;
+    background-image: url("../../../assets/image/back.svg");
+    background-repeat: no-repeat;
+    background-position: 20px;
+}
+
+.pricing {
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+
+    &-title {
+        font-size: 44px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    &-subtitle {
+        margin-top: 20px;
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #000;
+    }
+
+    &-plans {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+}
+
+.card {
+    padding: 20px;
+    margin-right: 20px;
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: left;
+
+    &-title {
+        height: 100px;
+        h3 {
+            font-weight: lighter;
+            font-size: 25px;
+        }
+        h2 {
+            font-weight: bold;
+            font-size: 30px;
+            
+            span {
+                font-size: 15px;
+            }
+        }
+    }
+
+    &-subtitle {
+        margin-top: -10px;
+        font-size: 13px;
+    }
+
+    &-content {
+        height: 230px;
+        margin-top: 40px;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+
+    &-footer {
+        text-align: center !important;
+        margin-top: 20px;
+
+        &-free {
+            cursor: pointer;
+            border-radius: 30px;
+            border: 1px solid rgb(117, 117, 117);
+            background-color: transparent;
+            width: 80%;
+            height: 50px;
+        }
+
+        &-paid {
+            cursor: pointer;
+            color: #fff;
+            border-radius: 30px;
+            border: none;
+            background-color: #1db954;
+            width: 80%;
+            height: 50px;
+        }
+
+        &-text {
+            font-weight: bold;
+        }
+    }
+}
+
+.line-braker {
+    margin-top: 20px;
+    border-bottom: 1px solid rgb(194, 193, 193);
+}
+
+.inactive {
+    color: rgb(165, 165, 165);
+}

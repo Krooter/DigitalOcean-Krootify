@@ -1,0 +1,83 @@
+<div *ngIf="displayForm == 'none'" style="display: inline-flex; justify-content: space-around; min-width: 500px;">
+    <button (click)="displayDataForm()" mat-raised-button color="primary">EDIT SONG DATA</button>
+    <button (click)="displayPhotoForm()" mat-raised-button color="warn">EDIT SONG PHOTO</button>
+</div>
+
+<div>
+    <div *ngIf="displayForm == 'data'">
+        <h1 style="display: flex; justify-content: center; font-weight: bold;">Update song information</h1>
+        <form [formGroup]="songUpdateForm">
+            <mat-form-field appearance="outline">
+                <input matInput formControlName="name" placeholder="Name">
+                <mat-error *ngIf="name?.hasError('required')">This field is required</mat-error>
+                <mat-error *ngIf="name?.errors?.maxLength">Maximum length of this field is 50 characters.</mat-error>
+                <mat-error *ngIf="name?.errors?.minlength">Minimum length of this field is 5 characters.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="date" formControlName="releaseDate">
+                <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                <mat-datepicker #date></mat-datepicker>
+                <mat-error *ngIf="releaseDate?.errors?.required">This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Artists</mat-label>
+                <mat-select formControlName="artistId" class="try">
+                    <mat-option *ngFor="let item of artists" [value]="item.id">{{item.sceneName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="artistId?.hasError('required')">This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Albums</mat-label>
+                <mat-select formControlName="albumId" style="color: black;">
+                    <mat-option *ngFor="let item of albums" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="albumId?.hasError('required')">This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Genres</mat-label>
+                <mat-select formControlName="songGenreId" style="color: black;">
+                    <mat-option *ngFor="let item of genres" [value]="item.id">{{item.genreName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="songGenreId?.hasError('required')">This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Categories</mat-label>
+                <mat-select formControlName="songCategoryId" style="color: black;">
+                    <mat-option *ngFor="let item of categories" [value]="item.id">{{item.categoryName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="songCategoryId?.hasError('required')">This field is required</mat-error>
+            </mat-form-field>
+            <button mat-raised-button (click)="updateSong()" [disabled]="songUpdateForm.invalid" color="primary">SUBMIT</button>
+            <button mat-raised-button (click)="hideForm()">CLOSE FORM</button>
+        </form>
+    </div>
+    
+    <div *ngIf="displayForm == 'photo'">
+        <h1 style="display: flex; justify-content: center; font-weight: bold;">Update song photo</h1>
+        <form class="photo-form" [formGroup]="photoUpdateForm">
+            <mat-form-field appearance="outline">
+                <ngx-mat-file-input #file formControlName="photo" [accept]="'.jpg, .png'">
+                </ngx-mat-file-input>
+                <mat-hint *ngIf="!photo?.dirty">Choise your photo for song.</mat-hint>
+                <mat-error *ngIf="photo?.hasError('required')">
+                    Please select a file
+                </mat-error>
+                <mat-error *ngIf="photo?.hasError('maxContentSize')">
+                    The total size must not exceed
+                    {{ photo?.getError("maxContentSize").maxSize | byteFormat }} ({{
+                    photo?.getError("maxContentSize").actualSize | byteFormat
+                    }}).
+                </mat-error>
+                <mat-error *ngIf="!photo?.hasError('requiredFileType')">
+                    You need to provide a valid image extension (.jpg | .mp3)
+                </mat-error>
+                <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            <button mat-raised-button (click)="updatePhoto()" [disabled]="photoUpdateForm.invalid" color="primary" style="margin-bottom: 10px; margin-top: 25px;">SUBMIT</button>
+            <button mat-raised-button (click)="hideForm()">CLOSE FORM</button>
+        </form>
+    </div>
+</div>
+
+

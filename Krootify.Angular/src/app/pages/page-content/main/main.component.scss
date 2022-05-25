@@ -1,0 +1,174 @@
+.container{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.content {
+    margin-top: -10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+    grid-template-rows: auto;
+    grid-row-gap: 8px;
+    font-family: Ghotham;
+    margin-bottom: 20px;
+    width: 100%;
+    min-height: 500px;
+    max-height: fit-content;
+}
+
+mat-card div img {
+    max-width: 500px;
+    max-height: 530px;
+    width: 100%;
+}
+
+div h1 {
+    color: white; 
+    font-weight: bold; 
+    font-size: 30px;
+}
+
+mat-card {
+    overflow: hidden;
+    width: 80%; 
+    height: fit-content;
+    max-height: 350px;
+    min-height: 200px;
+    background-color: rgba(0, 0, 0, 0.151);
+}
+
+mat-card .float-button{
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s linear;
+    width: 40px; 
+    height: 40px; 
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 12%;
+    bottom: 29%;
+}
+
+mat-card:hover {
+    transition: .5s;
+    background-color: rgba(82, 80, 80, 0.171);
+    .float-button {
+        transition:all .5s linear;
+        opacity: 1;
+        visibility: visible;
+        right: 12%;
+        bottom: 33%;
+    }
+}
+
+mat-card div p {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 0.6;
+    color: white;
+}
+
+mat-card div a {
+    line-height: 0.6;
+    color: #969494;
+}
+
+.menu {
+    color: #969494;
+    cursor: pointer;
+    right: 3%; 
+    bottom: 10%; 
+    position: absolute;
+    :hover{
+        color: primary;
+    }
+}
+
+.card-content{
+    color: #969494;
+    display: flex; 
+    flex-direction: column;
+    p {
+        padding-top: 2px;
+        padding-bottom: 3px;
+        max-width: 150px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+.dropdown {
+    position: absolute; 
+    right: 1%; 
+    bottom: 5%;
+}
+
+::ng-deep .menu {
+    padding: 0;
+    background-color: #181818;
+    color: white;
+    .mat-menu-submenu-icon {
+        color: white;
+    }
+}
+
+.paginator{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1%;
+    margin-top: -15px;
+}
+mat-paginator{
+    color: #969494;;
+    background-color: transparent;
+}
+
+mat-paginator .mat-paginator-icon{
+    color: #969494;
+    &:disabled{
+        color: #313131;
+    }
+}    
+
+.search {
+    position: absolute;
+    top: 7px;
+    left: 350px;
+    color: white;
+    background: url('../../../../assets/image/search.png');
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-color: transparent;
+    padding-left: 33px;
+    margin-bottom: 10px;
+    border-radius: 30px; 
+    width: 150px;
+    transition: 0.5s;
+    height: 30px;
+    margin-right: 4%;
+    &:focus{
+        outline: none;
+        transition: 0.5s;
+        width: 230px;
+    }
+    &::placeholder {
+        color: white;
+        opacity: 1;
+    }
+}
+
+.search-icon {
+    left: 18%;
+    top: 7.6%;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+}

@@ -1,0 +1,100 @@
+<div class="pricing">
+  <div routerLink="/" class="back-button">
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Back to home
+  </div>
+
+  <div class="pricing-title">Go get the music.</div>
+
+  <div class="pricing-plans">
+    <div class="card">
+      <div class="card-title">
+        <h3>Krootify Free</h3>
+        <h2>$0 <span>/ month</span></h2>
+      </div>
+
+      <div class="card-subtitle">&nbsp;</div>
+
+      <div class="line-braker"></div>
+
+      <div class="card-content">
+        <p>&#10004; <span style="margin-left: 10px">Play any track</span></p>
+        <p class="inactive">
+          &#10004;
+          <span style="margin-left: 10px">No advertisement interrupsions</span>
+        </p>
+        <p class="inactive">
+          &#10004; <span style="margin-left: 10px">Unlimited skips</span>
+        </p>
+        <p class="inactive">
+          &#10004; <span style="margin-left: 10px">High quality audio</span>
+        </p>
+      </div>
+
+      <div class="line-braker"></div>
+
+      <div class="card-footer">
+        <button class="card-footer-free">
+          <span
+            class="card-footer-text"
+            [routerLink]="'account/register'"
+            *ngIf="!currentUser"
+            >GET FREE</span
+          >
+          <span
+            class="card-footer-text"
+            *ngIf="currentUser"
+            (click)="alreadyOwn()"
+            >ALREADY OWN</span
+          >
+        </button>
+      </div>
+    </div>
+    <div class="card" *ngFor="let item of subscriptionPlans">
+      <div class="card-title">
+        <h3>{{ item.name }}</h3>
+        <h2>
+          ${{ item.ammount }}
+          <span>/ {{ item.period | lowercase }}</span>
+        </h2>
+      </div>
+      <div class="card-subtitle">
+        Get your free 7 days trial, cancel anytime.
+      </div>
+
+      <div class="line-braker"></div>
+
+      <div class="card-content">
+        <p *ngFor="let string of item.descriptionStrings">
+          &#10004; <span style="margin-left: 10px">{{ string }}</span>
+        </p>
+      </div>
+
+      <div class="line-braker"></div>
+
+      <div class="card-footer">
+        <button
+          *ngIf="currentUser?.subscription?.subscriptionStatus != 2"
+          class="card-footer-paid"
+          (click)="purchase(item)"
+        >
+          <span class="card-footer-text"
+            >GET {{ item.period | uppercase }}</span
+          >
+        </button>
+        <button
+          *ngIf="currentUser?.subscription?.subscriptionStatus === 2"
+          class="card-footer-free"
+        >
+          <span
+            class="card-footer-text"
+            *ngIf="currentUser"
+            (click)="alreadyOwn()"
+            >ALREADY OWN</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-subtitle">Krootify &copy;</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="form">
+    <h2>Add your own playlist right now.</h2>
+    <form [formGroup]="playListAddForm" (ngSubmit)="uploadFile(file)" class="form">
+        <app-text-input formControlName="name" [label]="'PlayList name'"></app-text-input>
+        <!-- <input type="file" #file> -->
+        <mat-form-field appearance="outline">
+            <ngx-mat-file-input #file formControlName="photo" placeholder="Playlist image" [accept]="'.jpg, .png'">
+            </ngx-mat-file-input>
+            <mat-hint *ngIf="!photo?.dirty">Choise a playlist image.</mat-hint>
+            <mat-error *ngIf="photo?.hasError('required')">
+                Please select a file
+            </mat-error>
+            <mat-error *ngIf="photo?.hasError('maxContentSize')">
+                The total size must not exceed
+                {{ photo?.getError("maxContentSize").maxSize | byteFormat }} ({{
+                photo?.getError("maxContentSize").actualSize | byteFormat
+                }}).
+            </mat-error>
+            <mat-error *ngIf="!photo?.hasError('requiredFileType')">
+                You need to provide a valid image extension (.jpg, .png)
+            </mat-error>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        <button style="margin-top: 10px;" mat-flat-button [disabled]="!playListAddForm.valid">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="form">
+    <h1 style="align-self: center;">ADD NEW ARTIST TO COLLECTION!</h1>
+    <form class="form" [formGroup]="artistCreateForm" (ngSubmit)="createArtist()">
+        <app-text-input formControlName="firstName" [label]="'Firstname'"></app-text-input>
+        <app-text-input formControlName="lastName" [label]="'Lastname'"></app-text-input>
+        <app-text-input formControlName="sceneName" [label]="'Scene name'"></app-text-input>
+        <mat-form-field style="margin-top: 10px;" appearance="outline">
+            <mat-label>Date of birth</mat-label>
+            <input matInput [matDatepicker]="date" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+            <mat-datepicker #date></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <ngx-mat-file-input #file formControlName="photo" [accept]="'.jpg, .png'">
+            </ngx-mat-file-input>
+            <mat-hint *ngIf="!photo?.dirty">Choise your photo for song.</mat-hint>
+            <mat-error *ngIf="photo?.hasError('required')">
+                Please select a file
+            </mat-error>
+            <mat-error *ngIf="photo?.hasError('maxContentSize')">
+                The total size must not exceed
+                {{ photo?.getError("maxContentSize").maxSize | byteFormat }} ({{
+                photo?.getError("maxContentSize").actualSize | byteFormat
+                }}).
+            </mat-error>
+            <mat-error *ngIf="!photo?.hasError('requiredFileType')">
+                You need to provide a valid image extension (.jpg | .png)
+            </mat-error>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        <button style="margin-top: 10px;" mat-raised-button [disabled]="artistCreateForm.invalid">Submit</button>
+    </form>
+</div>

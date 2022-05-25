@@ -1,0 +1,147 @@
+.container{
+  margin-top: 10px;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  background-color: transparent;
+  right: 0;
+}
+
+.mat-column-songUrl {
+  padding-right: 30px;
+}
+
+.mat-column-album {
+  padding-right: 26px;
+}
+
+.mat-column-genre {
+  padding-right: 16px;
+}
+
+.button {
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(151, 150, 150, 0.363);
+  }
+}
+
+.mat-focus-indicator{
+  background-color: none;
+}
+
+th {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+::ng-deep th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  padding-right: 0;
+}
+
+
+td {
+  color: white;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.discription {
+  height: auto;
+  text-overflow: clip;
+  white-space: normal;
+  padding-top: 10px;
+  max-width: 1200px;
+  padding-right: -100px;
+}
+
+.paginator{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 90px; 
+}
+
+mat-paginator{
+  color: #969494;
+  background-color: transparent;
+}
+
+mat-paginator .mat-paginator-icon{
+  color: #969494;
+  &:disabled{
+      color: #313131;
+  }
+}   
+
+.search {
+  position: absolute;
+  top: 7px;
+  left: 350px;
+  color: white;
+  background: url('./../../../assets/image/search.png');
+  background-position: 7px 7px;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-color: transparent;
+  padding-left: 33px;
+  margin-bottom: 10px;
+  border-radius: 30px; 
+  width: 150px;
+  transition: 0.5s;
+  height: 30px;
+  margin-right: 5%;
+  &:focus{
+      outline: none;
+      transition: 0.5s;
+      width: 230px;
+  }
+  &::placeholder {
+      color: white;
+      opacity: 1;
+  }
+}
+
+.search-icon {
+  left: 18%;
+  top: 7.6%;
+  position: absolute;
+  color: white;
+  font-size: 20px;
+}
+
+.table-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.mat-column-id {
+  padding-right: 10px;
+}
+
+.mat-column-name {
+  padding-right: 10px;
+}
+
+.td-title {
+  display: flex;
+  align-items: center;
+  div {
+      margin-top: 20px;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: flex-end;
+      height: 100%;
+      margin-left: 10px;
+  }
+}
