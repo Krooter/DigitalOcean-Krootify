@@ -7,18 +7,16 @@
 .content {
     margin-top: -10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+    grid-template-columns: repeat(auto-fit, 14%);
     grid-template-rows: auto;
     grid-row-gap: 8px;
     font-family: Ghotham;
     margin-bottom: 20px;
     width: 100%;
-    min-height: 500px;
-    max-height: fit-content;
 }
 
 mat-card div img {
-    max-width: 500px;
+    max-width: 300px;
     max-height: 530px;
     width: 100%;
 }
@@ -31,10 +29,9 @@ div h1 {
 
 mat-card {
     overflow: hidden;
-    width: 80%; 
+    width: 80%;
     height: fit-content;
     max-height: 350px;
-    min-height: 200px;
     background-color: rgba(0, 0, 0, 0.151);
 }
 
@@ -171,4 +168,28 @@ mat-paginator .mat-paginator-icon{
     position: absolute;
     color: white;
     font-size: 20px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .content {
+        grid-template-columns: repeat(4, minmax(10%, 25%));
+    }
+}
+@media only screen and (max-width: 1300px) {
+    .content {
+        grid-template-columns: repeat(4, minmax(10%, 25%));
+    }
+}
+@media only screen and (max-width: 768px) {
+    .search {
+        left: 100px;
+    }
+    .content {
+        grid-template-columns: repeat(4, minmax(10%, 25%));
+    }
+}
+@media only screen and (max-width: 1300px) {
+    .content {
+        grid-template-columns: repeat(4, minmax(10%, 25%));
+    }
 }

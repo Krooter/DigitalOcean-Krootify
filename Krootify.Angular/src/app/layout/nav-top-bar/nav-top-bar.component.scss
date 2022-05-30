@@ -107,3 +107,45 @@
   justify-content: flex-end;
   font-size: 17px;
 }
+
+.responsive-loggeduser {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .topbar {
+      margin-left: 10px; 
+  }
+
+  .navigation {
+    left: 10px;
+  }
+
+  .panel {
+    .premium {
+      display: none;
+    }
+
+    .loggeduser {
+      display: none;
+    }
+
+    .responsive-loggeduser {
+      display: block;
+      cursor: pointer;
+      div {
+        img {
+          position: absolute;
+          object-fit: cover;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          color: white;
+          left: 2%;
+          top: 5%;
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+}

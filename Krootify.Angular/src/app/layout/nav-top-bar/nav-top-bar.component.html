@@ -1,9 +1,9 @@
 <div class="">
   <div *ngIf="controls" class="navigation">
-    <button [disabled]="isBackEnabled()" mat-mini-fab (click)="back()">
+    <button [disabled]="history_depth <= 0" mat-mini-fab (click)="back()">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
-    <button [disabled]="isForwardEnabled()" mat-mini-fab (click)="forward()">
+    <button [disabled]="history_depth >= 0" mat-mini-fab (click)="forward()">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
   </div>
@@ -30,6 +30,12 @@
           <a (click)="logout()">Logout <mat-icon>logout</mat-icon></a>
         </div>
       </button>
+    </div>
+
+    <div class="responsive-loggeduser" (click)="openSideBar()">
+      <div>
+        <img src="{{ (currentUser$ | async)?.photoUrl }}" />
+      </div>
     </div>
   </div>
 </div>

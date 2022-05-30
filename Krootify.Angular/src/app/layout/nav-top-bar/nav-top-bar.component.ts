@@ -1,12 +1,13 @@
-import { AccountPanelComponent } from './../../account/account-panel/account-panel.component';
-import { MatDialog } from '@angular/material/dialog';
-import { AccountService } from './../../_services/account.service';
-import { IUser } from './../../_models/User/user';
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NavigationEnd, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { SubscriptionStatus } from 'src/app/_models/User/subscription-status-enum';
-import { ActivatedRoute } from '@angular/router';
+import { AccountPanelComponent } from './../../account/account-panel/account-panel.component';
+import { IUser } from './../../_models/User/user';
+import { AccountService } from './../../_services/account.service';
 
 @Component({
   selector: 'app-nav-top-bar',
@@ -18,21 +19,26 @@ export class NavTopBarComponent implements OnInit {
   currentUser$?: Observable<IUser>;
   isDisplayed = false;
   isSubscribed = false;
-  private history_depth = 0;
+  public history_depth = 0;
 
   constructor(
     private accountService: AccountService,
     private location: Location,
     private dialog: MatDialog,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.currentUser$ = this.accountService.currentUser$;
+
     this.accountService.currentUser$.subscribe((x) => {
       this.isSubscribed =
         x?.subscription?.subscriptionStatus === SubscriptionStatus.Active;
     });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((x) => {});
   }
 
   logout() {
@@ -40,25 +46,17 @@ export class NavTopBarComponent implements OnInit {
   }
 
   back() {
-    this.history_depth += 1;
+    this.history_depth -= 1;
     this.location.back();
   }
 
   forward() {
-    this.history_depth -= 1;
+    this.history_depth += 1;
     this.location.forward();
   }
 
   openProfileSettings() {
     this.dialog.open(AccountPanelComponent);
-  }
-
-  isBackEnabled() {
-    return this.history_depth > 0;
-  }
-
-  isForwardEnabled() {
-    return this.history_depth < 0;
   }
 
   displayDropDownMenu() {
@@ -72,4 +70,6 @@ export class NavTopBarComponent implements OnInit {
   isAdmin() {
     return this.accountService.isAdmin();
   }
+
+  openSideBar() {}
 }

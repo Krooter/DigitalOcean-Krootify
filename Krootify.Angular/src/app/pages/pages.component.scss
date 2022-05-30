@@ -2,3 +2,9 @@
     margin-top: 50px;
     margin-left: 260px; 
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-left: 10px; 
+    }
+  }
