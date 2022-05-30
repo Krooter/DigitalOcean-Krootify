@@ -97,6 +97,13 @@ mat-card div a {
         white-space: nowrap;
         overflow: hidden;
     }
+
+    a {
+        max-width: 150px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
 
 .dropdown {
@@ -175,21 +182,27 @@ mat-paginator .mat-paginator-icon{
         grid-template-columns: repeat(4, minmax(10%, 25%));
     }
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 900px) {
     .content {
-        grid-template-columns: repeat(4, minmax(10%, 25%));
+        grid-template-columns: repeat(3, minmax(10%, 33%));
     }
 }
 @media only screen and (max-width: 768px) {
     .search {
         left: 100px;
     }
+
     .content {
         grid-template-columns: repeat(4, minmax(10%, 25%));
     }
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 600px) {
     .content {
-        grid-template-columns: repeat(4, minmax(10%, 25%));
+        grid-template-columns: repeat(3, minmax(10%, 33%));
+    }
+}
+@media only screen and (max-width: 400px) {
+    .content {
+        grid-template-columns: repeat(2, minmax(10%, 50%));
     }
 }
