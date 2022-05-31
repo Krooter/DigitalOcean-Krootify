@@ -1,9 +1,9 @@
-import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { StreamState } from '../_models/Song/streamstate';
-import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root',

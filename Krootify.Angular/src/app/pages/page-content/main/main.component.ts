@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 import { MatGridList } from '@angular/material/grid-list';
 import { PageEvent } from '@angular/material/paginator';
+import { ISongPlayList } from 'src/app/_models/Song/songplaylist';
 import { Params } from '../../../_models/Params/Params';
 import { ISong } from '../../../_models/Song/song';
-import { ISongPlayList } from '../../../_models/Song/songplaylist';
 import { PlaylistService } from '../../../_services/playlist.service';
 import { SongService } from '../../../_services/song.service';
 import { ICategory } from './../../../_models/Song/category';
