@@ -64,11 +64,8 @@ export class MainComponent implements OnInit {
     if (this.innerWidth >= 1680) {
       this.params.pageSize = 21;
     }
-    if (this.innerWidth < 1680 && this.innerWidth >= 1476) {
-      this.params.pageSize = 12;
-    }
-    if (this.innerWidth < 1476 && this.innerWidth >= 1280) {
-      this.params.pageSize = 10;
+    if (this.innerWidth < 1280 && this.innerWidth >= 1476) {
+      this.params.pageSize = 14;
     }
     if (this.innerWidth < 1280) {
       this.params.pageSize = 8;

@@ -29,7 +29,7 @@ div h1 {
 
 mat-card {
     overflow: hidden;
-    width: 80%;
+    width: 75%;
     height: fit-content;
     max-height: 350px;
     background-color: rgba(0, 0, 0, 0.151);
@@ -62,16 +62,17 @@ mat-card:hover {
 }
 
 mat-card div p {
+    line-height: 0.8;
     margin-top: 10px;
     font-size: 15px;
     font-weight: bold;
-    line-height: 0.6;
     color: white;
 }
 
 mat-card div a {
-    line-height: 0.6;
     color: #969494;
+    line-height: 0.8;
+    max-width: 80%;
 }
 
 .menu {
@@ -190,6 +191,17 @@ mat-paginator .mat-paginator-icon{
 @media only screen and (max-width: 768px) {
     .search {
         left: 100px;
+    }
+
+    .paginator {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+
+        ::ng-deep .mat-form-field-infix {
+            width: 100px !important;
+        }
     }
 
     .content {

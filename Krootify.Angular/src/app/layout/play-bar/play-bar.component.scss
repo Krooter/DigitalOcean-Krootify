@@ -60,6 +60,13 @@
   margin-right: 10px;
 }
 
+.expand-panel {
+  position: absolute;
+  right: 5px;
+  top: 13px;
+  cursor: pointer;
+}
+
 .playbar {
     background-color: #181818;
     position: fixed;
@@ -85,4 +92,25 @@
   button:disabled mat-icon{
     background-color: transparent;
     color: #3b3b3b;
+  }
+
+  @media screen and (max-width: 768px) {
+    .playbar {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+    }
+
+    .col-1 {
+      width: 100%;
+      display: none;
+    }
+    .col-2 {
+      width: 100%
+    }
+
+    .col-3 {
+      display: none;
+    }
   }

@@ -150,5 +150,12 @@ $KrootifyClient-theme: mat.define-light-theme((
 .mat-select-arrow{
   color: #969494;
 }
+
+app-text-input {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
 // background-color: #969494 !important;
 // background-color: #1ab24d !important;
