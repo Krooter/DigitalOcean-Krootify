@@ -18,9 +18,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          
+      - name: Install packages
+        working-directory: Krootify.Angular
+        run: npm install
         
       - name: Build angular application
-        working-directory: Angular.Krootify
+        working-directory: Krootify.Angular
         run: npm build
       
       - name: Set up .NET Core
