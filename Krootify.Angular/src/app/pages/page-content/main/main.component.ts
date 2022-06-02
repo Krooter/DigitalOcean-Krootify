@@ -8,6 +8,7 @@ import {
 import { MatGridList } from '@angular/material/grid-list';
 import { PageEvent } from '@angular/material/paginator';
 import { ISongPlayList } from 'src/app/_models/Song/SongPlayList';
+import { PlayerService } from 'src/app/_services/player.service';
 import { Params } from '../../../_models/Params/Params';
 import { ISong } from '../../../_models/Song/song';
 import { PlaylistService } from '../../../_services/playlist.service';
@@ -36,6 +37,8 @@ export class MainComponent implements OnInit {
   categories!: ICategory[];
   genres!: IGenre[];
   innerWidth: any;
+  isPaused: boolean = false;
+  currentSong: number;
   sortOption = [
     { name: 'Ascending name', value: 'nameAsc' },
     { name: 'Descending name', value: 'nameDesc' },
@@ -48,7 +51,8 @@ export class MainComponent implements OnInit {
   constructor(
     private songService: SongService,
     private playListService: PlaylistService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private songPlayerService: PlayerService
   ) {}
 
   ngOnInit() {
@@ -58,11 +62,14 @@ export class MainComponent implements OnInit {
     this.getCategories();
     this.getGenres();
     this.getPlayLists();
+    this.songPlayerService.getState().subscribe((x) => {
+      this.isPaused = x.playing;
+    });
   }
 
   setPageSize() {
     if (this.innerWidth >= 1680) {
-      this.params.pageSize = 21;
+      this.params.pageSize = 14;
     }
     if (this.innerWidth < 1280 && this.innerWidth >= 1476) {
       this.params.pageSize = 14;
@@ -120,7 +127,23 @@ export class MainComponent implements OnInit {
   }
 
   play(songData: ISong): void {
+    if (this.currentSong && this.currentSong === songData.id && this.isPaused) {
+      this.songPlayerService.pause();
+      this.isPaused = true;
+      return;
+    }
+
+    if (
+      this.currentSong &&
+      this.currentSong === songData.id &&
+      !this.isPaused
+    ) {
+      this.songPlayerService.play();
+      return;
+    }
+
     this.songService.setPlaySong(songData);
+    this.currentSong = songData.id;
   }
 
   displayFunctions() {

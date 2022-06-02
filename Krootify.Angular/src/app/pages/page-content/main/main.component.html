@@ -57,7 +57,10 @@
     <div>
       <img src="{{ item?.photoUrl }}" />
       <button class="float-button" mat-fab color="primary" (click)="play(item)">
-        <mat-icon>play_arrow</mat-icon>
+        <mat-icon *ngIf="item.id !== currentSong || !isPaused"
+          >play_arrow</mat-icon
+        >
+        <mat-icon *ngIf="item.id === currentSong && isPaused">pause</mat-icon>
       </button>
     </div>
     <div class="card-content">
