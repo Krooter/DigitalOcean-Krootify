@@ -21,7 +21,8 @@ export class PlayBarComponent implements OnInit, OnDestroy {
   currentIndex: number = 0;
   lastplay!: string | null;
   test!: number | null;
-  isMobileView: any;
+  isMobileView: boolean;
+  isDetailedView: boolean = false;
 
   constructor(
     private songService: SongService,
@@ -177,6 +178,24 @@ export class PlayBarComponent implements OnInit, OnDestroy {
     } else {
       return 0;
     }
+  }
+
+  expandDetails() {
+    this.isDetailedView = !this.isDetailedView;
+    if (this.isDetailedView) {
+      this.functiondisable();
+    }
+  }
+
+  functiondisable() {
+    // To get the scroll position of current webpage
+    var TopScroll = window.pageYOffset || document.documentElement.scrollTop;
+    var LeftScroll = window.pageXOffset || document.documentElement.scrollLeft;
+
+    // if scroll happens, set it to the previous value
+    (window as any).onscroll = function () {
+      window.scrollTo(LeftScroll, TopScroll);
+    };
   }
 
   @HostListener('window:resize', ['$event'])

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5001/api/',
-  openApiUrl: 'http://localhost:5001',
+  apiUrl: 'https://krootify.azurewebsites.net/api/',
+  openApiUrl: 'https://krootify.azurewebsites.net/',
   stripePublicKey:
     'pk_test_51Kk8vlDs74tN5fIYe2ayv1YlBGpqE5VMELbTPjpAE9EXAbsv5VUn5YjLGFNMGmwPXATG6Qw23jSgL5yu2pxE4LOn00wj14VU90',
 };

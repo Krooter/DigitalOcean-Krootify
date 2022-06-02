@@ -1,4 +1,4 @@
-<div class="playbar">
+<div class="playbar" *ngIf="!isDetailedView">
   <div class="col-1" *ngIf="song">
     <img *ngIf="song?.photoUrl" src="{{ song?.photoUrl }}" />
     <div>
@@ -86,7 +86,117 @@
       (input)="volume($event)"
     ></mat-slider>
   </div>
-  <div class="expand-panel" mat-button *ngIf="isMobileView">
+  <div
+    class="expand-panel"
+    mat-button
+    *ngIf="isMobileView && song"
+    (click)="expandDetails()"
+  >
     <mat-icon>keyboard_arrow_up</mat-icon>
+  </div>
+</div>
+
+<div class="expandend-panel" scroll="no" *ngIf="isDetailedView">
+  <div
+    class="expand-panel"
+    mat-button
+    *ngIf="isMobileView && song"
+    (click)="expandDetails()"
+  >
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </div>
+  <div class="detailed-image">
+    <img [src]="song.photoUrl" />
+  </div>
+  <div class="title">{{ song.name }}</div>
+  <div class="sub-title">{{ song.artists }}</div>
+  <div class="detailed-play-panel">
+    <div class="col-1" *ngIf="song">
+      <img *ngIf="song?.photoUrl" src="{{ song?.photoUrl }}" />
+      <div>
+        <p>{{ song?.name }}</p>
+        <a>{{ song?.artists }}</a>
+      </div>
+    </div>
+    <div class="col-2" *ngIf="song">
+      <div class="pannel">
+        <div class="slider">
+          <span id="current-time">{{ state?.readableCurrentTime }}</span>
+          <mat-slider
+            [disabled]="!song"
+            color="primary"
+            min="0"
+            max="{{ state?.duration }}"
+            step="0.1"
+            value="{{ state?.currentTime }}"
+            (input)="seekTo($event)"
+          ></mat-slider>
+          <span *ngIf="song?.duration" id="duration">{{
+            state?.readableDuration
+          }}</span>
+        </div>
+        <button
+          mat-button
+          (click)="skip_previous()"
+          [disabled]="currentIndex == 0 || lastplay == 'song'"
+        >
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button
+          mat-button
+          *ngIf="!state?.playing"
+          (click)="play()"
+          [disabled]="state?.error"
+        >
+          <mat-icon class="play_btn">play_circle_filled</mat-icon>
+        </button>
+        <button
+          mat-button
+          *ngIf="state?.playing"
+          (click)="pause()"
+          [disabled]="state?.error"
+        >
+          <mat-icon class="play_btn">pause_circle_filled</mat-icon>
+        </button>
+        <button
+          mat-button
+          (click)="skip_next()"
+          [disabled]="currentIndex == getPlayListLength() || lastplay == 'song'"
+        >
+          <mat-icon>skip_next</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="col-3" *ngIf="song">
+      <button *ngIf="state?.volume == 0" (click)="unMute()" mat-button>
+        <mat-icon>volume_off</mat-icon>
+      </button>
+      <button
+        *ngIf="state!.volume > 0 && state!.volume <= 0.2"
+        (click)="mute()"
+        mat-button
+      >
+        <mat-icon>volume_mute</mat-icon>
+      </button>
+      <button
+        *ngIf="state!.volume > 0.2 && state!.volume <= 0.5"
+        (click)="mute()"
+        mat-button
+      >
+        <mat-icon>volume_down</mat-icon>
+      </button>
+      <button *ngIf="state!.volume > 0.5" (click)="mute()" mat-button>
+        <mat-icon>volume_up</mat-icon>
+      </button>
+      <mat-slider
+        [vertical]="isMobileView"
+        color="primary"
+        value="{{ state!.volume }}"
+        min="0"
+        max="1"
+        step="0.01"
+        (input)="volume($event)"
+      ></mat-slider>
+    </div>
   </div>
 </div>

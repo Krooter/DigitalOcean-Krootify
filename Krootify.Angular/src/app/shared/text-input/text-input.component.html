@@ -1,66 +1,70 @@
-<mat-form-field
-  appearance="outline"
-  style="max-width: 400px; width: 100%"
-  [ngClass]="
-    controlDir && controlDir.control && controlDir.control.dirty
-      ? !controlDir.control.valid
-        ? 'mat-form-field-invalid'
-        : 'mat-form-field-valid'
-      : ''
-  "
+<div
+  style="display: flex; flex-direction: column; max-width: 400px; width: 100%"
 >
-  <mat-label>{{ label }}</mat-label>
-  <input
-    id="{{ label }}"
-    matInput
-    #input
-    placeholder="{{ label }}"
-    [type]="type"
-    (input)="onChange($any($event.target).value)"
-    (blur)="onTouched()"
-  />
-  <mat-icon
-    *ngIf="!controlDir.control?.touched && !controlDir.control?.dirty"
-    matSuffix
-    >{{ icon }}</mat-icon
-  >
-  <mat-icon
-    *ngIf="
-      controlDir.control?.invalid &&
-      (controlDir.control?.touched || controlDir.control?.dirty)
+  <mat-form-field
+    appearance="outline"
+    style="max-width: 400px"
+    [ngClass]="
+      controlDir && controlDir.control && controlDir.control.dirty
+        ? !controlDir.control.valid
+          ? 'mat-form-field-invalid'
+          : 'mat-form-field-valid'
+        : ''
     "
-    matSuffix
-    color="warn"
-    >close</mat-icon
   >
-  <mat-icon *ngIf="controlDir.control?.valid" matSuffix color="primary"
-    >check_circle_outline</mat-icon
+    <mat-label>{{ label }}</mat-label>
+    <input
+      id="{{ label }}"
+      matInput
+      #input
+      placeholder="{{ label }}"
+      [type]="type"
+      (input)="onChange($any($event.target).value)"
+      (blur)="onTouched()"
+    />
+    <mat-icon
+      *ngIf="!controlDir.control?.touched && !controlDir.control?.dirty"
+      matSuffix
+      >{{ icon }}</mat-icon
+    >
+    <mat-icon
+      *ngIf="
+        controlDir.control?.invalid &&
+        (controlDir.control?.touched || controlDir.control?.dirty)
+      "
+      matSuffix
+      color="warn"
+      >close</mat-icon
+    >
+    <mat-icon *ngIf="controlDir.control?.valid" matSuffix color="primary"
+      >check_circle_outline</mat-icon
+    >
+    <mat-hint *ngIf="!controlDir.control?.dirty && !controlDir.control?.touched"
+      >Enter your {{ label }}.</mat-hint
+    >
+  </mat-form-field>
+  <div
+    *ngIf="
+      controlDir &&
+      controlDir.control &&
+      !controlDir.control.valid &&
+      controlDir.control.dirty
+    "
   >
-  <mat-hint *ngIf="!controlDir.control?.dirty && !controlDir.control?.touched"
-    >Enter your {{ label }}.</mat-hint
-  >
-</mat-form-field>
-<ng-container
-  *ngIf="
-    controlDir &&
-    controlDir.control &&
-    !controlDir.control.valid &&
-    controlDir.control.dirty
-  "
->
-  <mat-error *ngIf="controlDir.control?.errors?.required"
-    >This field is required.</mat-error
-  >
-  <mat-error *ngIf="controlDir.control?.errors?.minlength"
-    >Your {{ label }} is to short.</mat-error
-  >
-  <mat-error *ngIf="controlDir.control?.errors?.pattern"
-    >You have entered a invalid {{ label }}.</mat-error
-  >
-  <mat-error *ngIf="controlDir.control?.errors?.emailExist"
-    >Email address in use.</mat-error
-  >
-  <mat-error *ngIf="controlDir.control?.errors?.maxlength"
-    >Your {{ label }} is to long.</mat-error
-  >
-</ng-container>
+    <mat-error *ngIf="controlDir.control?.errors?.required"
+      >This field is required.</mat-error
+    >
+    <mat-error *ngIf="controlDir.control?.errors?.minlength"
+      >Your {{ label }} is to short.</mat-error
+    >
+    <mat-error *ngIf="controlDir.control?.errors?.pattern"
+      >You have entered a invalid {{ label }}.</mat-error
+    >
+    <mat-error *ngIf="controlDir.control?.errors?.emailExist"
+      >Email address in use.</mat-error
+    >
+    <mat-error *ngIf="controlDir.control?.errors?.maxlength"
+      >Your {{ label }} is to long.</mat-error
+    >
+  </div>
+</div>

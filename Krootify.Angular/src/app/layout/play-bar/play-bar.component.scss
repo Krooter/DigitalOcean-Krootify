@@ -67,6 +67,46 @@
   cursor: pointer;
 }
 
+.expandend-panel {
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, 0% 0%, 0% 30%, from(rgb(43, 65, 98)), to(rgb(18, 16, 14))) fixed;
+
+  position: absolute;
+  bottom: 0;
+  z-index: 9999;
+  left: 0;
+  color: white;
+
+  .title {
+    margin-top: 5%;
+    margin-left: 30px;
+    font-size: 20px;
+  }
+
+  .sub-title {
+    margin-top: 5px;
+    margin-left: 30px;
+    color: rgb(156, 156, 156);
+  }
+
+  .detailed-play-panel {
+    margin-top: 50px;
+  }
+}
+
+.detailed-image {
+  margin-top: 5%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .playbar {
     background-color: #181818;
     position: fixed;
@@ -107,7 +147,11 @@
       display: none;
     }
     .col-2 {
-      width: 100%
+      width: 100%;
+
+      .panel {
+        width: 100%;
+      }
     }
 
     .col-3 {
